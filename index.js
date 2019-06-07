@@ -126,7 +126,7 @@ app.post('/riflepost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `C://Users/shart/Documents/Coding/Projects/the-social-reloader-react/public` + '/uploads/' + file.name;
+        file.path = `https://the-social-reloader-react.alecstein44.now.sh` + '/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
@@ -172,7 +172,7 @@ app.post('/pistolpost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `C://Users/shart/Documents/Coding/Projects/the-social-reloader-react/public` + '/uploads/' + file.name;
+        file.path = `https://the-social-reloader-react.alecstein44.now.sh` + '/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
@@ -218,7 +218,7 @@ app.post('/shotgunpost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `C://Users/shart/Documents/Coding/Projects/the-social-reloader-react/public` + '/uploads/' + file.name;
+        file.path = `https://the-social-reloader-react.alecstein44.now.sh` + '/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
