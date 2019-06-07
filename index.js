@@ -10,7 +10,7 @@ const { PORT, DB_URL } = require('./config')
 const app = express();
 app.use(morgan('dev'));
 app.use(cors());
-app.use('/public', express.static('public'));
+app.use('/public', express.static(__dirname + 'public'));
 app.use(express.json());
 
 const db = knex({
