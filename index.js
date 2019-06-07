@@ -10,7 +10,7 @@ const { PORT, DB_URL } = require('./config')
 const app = express();
 app.use(morgan('dev'));
 app.use(cors());
-app.use('/uploads', express.static('uploads'));
+app.use('/public', express.static('public'));
 app.use(express.json());
 
 const db = knex({
@@ -126,7 +126,7 @@ app.post('/riflepost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `https://the-social-reloader-react.alecstein44.now.sh` + '/uploads/' + file.name;
+        file.path = `http://localhost` + '/public/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
@@ -172,7 +172,7 @@ app.post('/pistolpost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `https://the-social-reloader-react.alecstein44.now.sh` + '/uploads/' + file.name;
+        file.path = `http://localhost` + '/public/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
@@ -218,7 +218,7 @@ app.post('/shotgunpost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `https://the-social-reloader-react.alecstein44.now.sh` + '/uploads/' + file.name;
+        file.path = `http://localhost` + '/public/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
