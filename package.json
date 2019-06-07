@@ -7,6 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon app",
     "debug": "ndb node app",
+    "migrate-production": "postgrator --config postgrator-production-config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
