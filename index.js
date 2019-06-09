@@ -125,13 +125,13 @@ app.post('/riflepost', (req, res) => {
     const form = new formidable.IncomingForm();
 
 
-    /*form.on('fileBegin', function (name, file){
+    form.on('fileBegin', function (name, file){
         file.path = `http://localhost` + '/public/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
         console.log('Uploaded ' + file.name);
-    });*/
+    });
 
     form.parse(req, function(err, fields, files) {
         console.log(files)
