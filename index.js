@@ -19,6 +19,12 @@ const db = knex({
   connection: DB_URL,
 })
 
+cloudinary.config({ 
+  cloud_name: 'hugbqzfbt', 
+  api_key: '876515715776955', 
+  api_secret: 'jueehoj8eTKBLNAfCn4C_cddhbM' 
+});
+
 app.set('db', db)
 //const db = require('./db.json');
 
