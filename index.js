@@ -134,7 +134,7 @@ app.post('/riflepost', (req, res) => {
 
     form.on('fileBegin', function (name, file){
       file.path = `https://res.cloudinary.com/hugbqzfbt/image/upload/uploads/${file.name}`
-         cloudinary.uploader.upload(`${file.path}`,
+         cloudinary.uploader.upload(`${file}`,
          function(result) { console.log(result) })
     });
 
