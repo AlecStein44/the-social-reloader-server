@@ -5,8 +5,9 @@ const cors = require('cors');
 const bodyParser= require('body-parser')
 const multer = require('multer');
 const formidable = require('formidable')
+const cloudinary = require('cloudinary')
 const { NODE_ENV } = require('./config')
-const { PORT, DB_URL } = require('./config')
+const { PORT, DB_URL, CLOUDINARY_URL } = require('./config')
 const app = express();
 app.use(morgan('dev'));
 app.use(cors());
@@ -126,7 +127,8 @@ app.post('/riflepost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `localhost` + '/public/uploads/' + file.name;
+        file.path = file.path = cloudinary.uploader.upload(`${file.name}`,
+                      function(result) { console.log(result) })
     });
 
     form.on('file', function (name, file){
@@ -172,7 +174,8 @@ app.post('/pistolpost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `https://the-social-reloader-server.herokuapp.com` + '/public/uploads/' + file.name;
+        file.path = cloudinary.uploader.upload(`${file.name}`,
+        function(result) { console.log(result) })
     });
 
     form.on('file', function (name, file){
