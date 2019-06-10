@@ -180,8 +180,7 @@ app.post('/pistolpost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = cloudinary.uploader.upload(`${file.name}`,
-        function(result) { console.log(result) })
+        file.path = './public/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
@@ -227,7 +226,7 @@ app.post('/shotgunpost', (req, res) => {
 
 
     form.on('fileBegin', function (name, file){
-        file.path = `https://the-social-reloader-server.herokuapp.com` + '/public/uploads/' + file.name;
+        file.path = './public/uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
