@@ -266,3 +266,39 @@ app.post('/shotgunpost', (req, res) => {
         })
       });
 })
+
+app.post('/signup', (req, res) => {
+    const form = new formidable.IncomingForm();
+
+
+    form.on('fileBegin', function (name, file){
+        file.path = './public/uploads/' + file.name;
+    });
+
+    form.on('file', function (name, file){
+        console.log('Uploaded ' + file.name);
+    });
+
+    form.parse(req, function(err, fields, files) {
+        console.log(files)
+        console.log(fields)
+        db('userdata')
+        .insert([
+            {
+                email: fields.email,
+                username: fields.username,
+                password: fields.password
+            }
+        ])
+        .then(results => {
+            return (
+                console.log(`The results are ${JSON.stringify(results)}`),
+                res.json(results)
+            )
+         })
+        .catch(error => {
+            return res.json(error)
+        })
+      });
+})
+
