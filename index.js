@@ -279,19 +279,18 @@ app.post('/signup', (req, res) => {
     form.parse(req, function(err, fields, files) {
         console.log(files)
         console.log(fields)
-      
-        db('userdata')
+      db('userdata')
         .where({
           email: fields.email,
           username: fields.username
-        })
-        .first()
-        .then((found) => {
-           if (found){
-             res.json('already present');
-           }else{
- 
-              db('userdata')
+      })
+      .first()
+      .then((found) => {
+        if (found) => {
+          res.json('already present');
+        }else{
+          
+          db('userdata')
               .insert([
                 {
                     email: fields.email,
@@ -306,6 +305,9 @@ app.post('/signup', (req, res) => {
                 )
              })
             .catch(res.json(error));
-           }
-        });
+            
+          
+        }
+        
+    })
        
