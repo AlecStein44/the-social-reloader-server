@@ -294,11 +294,11 @@ app.post('/signup', (req, res) => {
                 console.log(`The results are ${JSON.stringify(results)}`),
                 res.json(results)
             )
-         .catch(res.json(error))
          })
-        .catch(error => {
-            return res.json(error)
-        })
+        .returning('*')
+        .bind(console)
+        .then(console.log)
+        .catch(res.json(error));
       });
 })
 
