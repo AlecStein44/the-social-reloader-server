@@ -295,7 +295,6 @@ app.post('/signup', (req, res) => {
                 res.json(results)
             )
          })
-        .returning('*')
         .bind(console)
         .then(console.log)
         .catch(res.json(error));
