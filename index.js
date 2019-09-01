@@ -281,7 +281,7 @@ app.post('/signup', (req, res) => {
         console.log(fields)
       
         db('userdata')
-        .whereNotExists(db.select('*').from('userdata').whereRaw('userdata.email = fields.email', 'userdata.username = fields.username')
+       
         .insert([
             {
                 email: fields.email,
@@ -295,10 +295,6 @@ app.post('/signup', (req, res) => {
                 res.json(results)
             )
          })
-        .catch(error => {
-            return res.json(error)
-        })
-        )
         .catch(error => {
             return res.json(error)
         })
