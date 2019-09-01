@@ -291,7 +291,6 @@ app.post('/signup', (req, res) => {
           res.json('already present');
         }else{
       db('userdata')
-        .insert({
           .insert([
             {
                 email: fields.email,
