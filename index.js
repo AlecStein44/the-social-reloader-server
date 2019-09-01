@@ -308,6 +308,7 @@ app.post('/signup', (req, res) => {
             
           
         }
+      })
         
     })
        
