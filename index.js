@@ -25,9 +25,6 @@ cloudinary.config({
   api_secret: 'jueehoj8eTKBLNAfCn4C_cddhbM' 
 });
 
-app.set('db', db)
-//const db = require('./db.json');
-
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`)
 })
@@ -282,7 +279,9 @@ app.post('/signup', (req, res) => {
     form.parse(req, function(err, fields, files) {
         console.log(files)
         console.log(fields)
+      
         db('userdata')
+        .whereNotExists(db.select('*').from('userdata').whereRaw('userdata.email = fields.email', 'userdata.username = fields.username')
         .insert([
             {
                 email: fields.email,
@@ -296,6 +295,10 @@ app.post('/signup', (req, res) => {
                 res.json(results)
             )
          })
+        .catch(error => {
+            return res.json(error)
+        })
+        )
         .catch(error => {
             return res.json(error)
         })
