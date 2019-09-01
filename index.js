@@ -286,7 +286,7 @@ app.post('/signup', (req, res) => {
       })
       .first()
       .then((found) => {
-        if (found) => {
+        if (found){
           res.json('already present');
         }else{
           
