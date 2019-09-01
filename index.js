@@ -294,7 +294,7 @@ app.post('/signup', (req, res) => {
                 console.log(`The results are ${JSON.stringify(results)}`),
                 res.json(results)
             )
-         .catch(return res.json(error))
+         .catch(res.json(error))
          })
         .catch(error => {
             return res.json(error)
