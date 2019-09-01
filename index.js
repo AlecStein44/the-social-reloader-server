@@ -308,5 +308,4 @@ app.post('/signup', (req, res) => {
             .catch(res.json(error));
            }
         });
-        
-})
+       
