@@ -280,16 +280,15 @@ app.post('/signup', (req, res) => {
         console.log(files)
         console.log(fields)
       db('userdata')
-        .where({
+        .whereExists({
           email: fields.email,
           username: fields.username
       })
-      .first()
-      .then((found) => {
-        if (!found){
+      .then(data => {
+        if( data.email == fields.email || data.username == fields.email) {
+  
           res.json('already present');
-        }else{
-          
+        } else {
           db('userdata')
               .insert([
                 {
@@ -297,8 +296,8 @@ app.post('/signup', (req, res) => {
                     username: fields.username,
                     password: fields.password
                 }
-            ])
+            ]) 
         }
-      })  
+      })
     })
 })
