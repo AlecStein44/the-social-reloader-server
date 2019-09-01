@@ -280,34 +280,33 @@ app.post('/signup', (req, res) => {
         console.log(files)
         console.log(fields)
       
-    db('userdata')
-      .where({
-      user_id: attrs.user_id,
-      date: attrs.date
-      })
-      .first() 
-      .then((found) => {
-        if (found){
-          res.json('already present');
-        }else{
-      db('userdata')
-          .insert([
-            {
-                email: fields.email,
-                username: fields.username,
-                password: fields.password
-            }
-        ])
-        .then(results => {
-            return (
-                console.log(`The results are ${JSON.stringify(results)}`),
-                res.json(results)
-            )
-         })
-        .catch(res.json(error));
-   }
-  });
+        db('userdata')
+        .where({
+          email: fields.email,
+          username: fields.username
+        })
+        .first()
+        .then((found) => {
+           if (found){
+             res.json('already present');
+           }else{
+ 
+              db('userdata')
+              .insert([
+                {
+                    email: fields.email,
+                    username: fields.username,
+                    password: fields.password
+                }
+            ])
+            .then(results => {
+                return (
+                    console.log(`The results are ${JSON.stringify(results)}`),
+                    res.json(results)
+                )
+             })
+            .catch(res.json(error));
+           }
+        });
         
 })
-  
-
