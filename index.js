@@ -280,9 +280,19 @@ app.post('/signup', (req, res) => {
         console.log(files)
         console.log(fields)
       
-        db('userdata')
-       
-        .insert([
+    db('userdata')
+      .where({
+      user_id: attrs.user_id,
+      date: attrs.date
+      })
+      .first() 
+      .then((found) => {
+        if (found){
+          res.json('already present');
+        }else{
+      db('userdata')
+        .insert({
+          .insert([
             {
                 email: fields.email,
                 username: fields.username,
@@ -295,9 +305,11 @@ app.post('/signup', (req, res) => {
                 res.json(results)
             )
          })
-        .bind(console)
-        .then(console.log)
         .catch(res.json(error));
-      });
+        });
+   }
+  });
+        
 })
+  
 
