@@ -286,7 +286,7 @@ app.post('/signup', (req, res) => {
       })
       .then(data => {
         if( data.email == fields.email || data.username == fields.email) {
-          res.json('already present');
+          res.json('already present' + data);
         } else {
           db('userdata')
               .insert([
