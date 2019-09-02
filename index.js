@@ -281,8 +281,10 @@ app.post('/signup', (req, res) => {
         console.log(fields)
       db('userdata')
         .whereExists([
+        {
           email: fields.email,
           username: fields.username
+        }
       ])
       .then(data => {
         if( data.email == fields.email || data.username == fields.email) {
