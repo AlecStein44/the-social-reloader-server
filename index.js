@@ -279,15 +279,6 @@ app.post('/signup', (req, res) => {
     form.parse(req, function(err, fields, files) {
         console.log(files)
         console.log(fields)
-      db('userdata')
-        .where({
-          email: fields.email,
-          username: fields.username
-      })
-      .then(data => {
-        if( data.email == fields.email || data.username == fields.email) {
-          res.json('already present' + data);
-        } else {
           db('userdata')
               .insert([
                 {
@@ -296,7 +287,5 @@ app.post('/signup', (req, res) => {
                     password: fields.password
                 }
             ]) 
-        }
-      })
     })
 })
