@@ -286,6 +286,15 @@ app.post('/signup', (req, res) => {
                     username: fields.username,
                     password: fields.password
                 }
-            ]) 
+            ])
+            .then(results => {
+            return (
+                console.log(`The results are ${JSON.stringify(results)}`),
+                res.json(results)
+            )
+            })
+            .catch(error => {
+            return res.json(error)
+            })
     })
 })
