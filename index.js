@@ -280,10 +280,10 @@ app.post('/signup', (req, res) => {
         console.log(files)
         console.log(fields)
       db('userdata')
-        .whereExists({
+        .whereExists([
           email: fields.email,
           username: fields.username
-      })
+      ])
       .then(data => {
         if( data.email == fields.email || data.username == fields.email) {
   
