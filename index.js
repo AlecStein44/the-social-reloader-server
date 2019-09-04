@@ -289,8 +289,7 @@ app.post('/signup', (req, res) => {
             ])
             .then(results => {
             return (
-                console.log(`The results are ${JSON.stringify(results)}`),
-                console.log(results.length),
+                console.log(JSON.stringify(results).length),
                 res.json(results)
             )
             })
