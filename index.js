@@ -295,7 +295,7 @@ app.post('/signup', (req, res) => {
                     res.json(results)
                   )
                 } else {
-                  return res.json(this.status)
+                  return res.json('error')
                 }
             })
             .catch(error => {
