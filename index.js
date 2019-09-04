@@ -264,6 +264,19 @@ app.post('/shotgunpost', (req, res) => {
       });
 })
 
+app.get('/escheck', (req, res) => {
+    db
+        .select('*')
+        .from('userdata')
+        .whereIn(['email', 'username'])
+        .then(data => {
+           return (
+                res.json(data),
+                console.log(data)
+           )
+        })
+ })
+
 app.post('/signup', (req, res) => {
     const form = new formidable.IncomingForm();
 
