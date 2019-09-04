@@ -268,7 +268,7 @@ app.get('/escheck', (req, res) => {
     db
         .select('*')
         .from('userdata')
-        .whereIn(['email', 'username'])
+        .where('email', 'username')
         .then(data => {
            return (
                 res.json(data),
