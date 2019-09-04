@@ -279,6 +279,7 @@ app.post('/signup', (req, res) => {
     form.parse(req, function(err, fields, files) {
         console.log(files)
         console.log(fields)
+        let status = 400;
           db('userdata')
               .insert([
                 {
@@ -289,8 +290,12 @@ app.post('/signup', (req, res) => {
             ])
             .then(results => {
             return (
-                console.log(JSON.stringify(results).length),
-                res.json(results)
+                if(JSON.stringify(results).length > 0) {
+                  console.log(JSON.stringify(results).length),
+                   res.json(results)
+                } else {
+                  res.json(this.status)
+                }
             )
             })
             .catch(error => {
