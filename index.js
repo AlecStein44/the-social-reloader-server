@@ -289,14 +289,14 @@ app.post('/signup', (req, res) => {
                 }
             ])
             .then(results => {
-            return (
                 if (JSON.stringify(results).length > 0) {
-                  console.log(JSON.stringify(results).length),
-                   res.json(results)
+                  return(
+                    console.log(JSON.stringify(results).length),
+                    res.json(results)
+                  )
                 } else {
-                  res.json(this.status)
+                  return res.json(this.status)
                 }
-            )
             })
             .catch(error => {
             return res.json(error)
