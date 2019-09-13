@@ -268,7 +268,6 @@ app.get('/escheck', (req, res) => {
     db
         .select('*')
         .from('userdata')
-        .where('*')
         .then(data => {
            return (
                 res.json(data),
