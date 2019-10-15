@@ -321,8 +321,8 @@ app.get('/login', (req, res) => {
     .select('*')
     .from('userdata')
     .where({
-      username: `${req.query.username}`,
-      password:  `${req.query.password}`
+      username: `${req.query.username}`/*,
+      password:  `${req.query.password}`*/
      })
     .then(data => {
        return (
