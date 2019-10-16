@@ -320,10 +320,11 @@ app.get('/login', (req, res) => {
     db
     .select('*')
     .from('userdata')
-    .where({
-      username: `${req.query.username}`/*,
-      password:  `${req.query.password}`*/
-     })
+    .whereRaw(`LOWER(name) LIKE ?`,[`%${req.query.username}%`])
+    /*.where({
+      username: `${req.query.username}`,
+      password:  `${req.query.password}`
+     })*/
     .then(data => {
        return (
             res.json(data),
