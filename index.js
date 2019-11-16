@@ -320,7 +320,7 @@ app.get('/login', (req, res) => {
     db
     .select('*')
     .from('userdata')
-    .where([{username: req.query.username},{password: req.query.password})
+    .where([{username: req.query.username},{password: req.query.password}])
     .then(data => {
        return (
             res.json(data),
